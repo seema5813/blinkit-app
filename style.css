@@ -1,0 +1,57 @@
+/* styles.css */
+
+/* General styling */
+body {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Navbar */
+  
+  .navbar-dark .nav-item .nav-link {
+    color: #fff;
+  }
+  
+  .navbar-dark .nav-item .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    border-radius: 0.25rem;
+    color: #fff;
+  }
+  
+  .fa-li {
+    position: relative;
+    left: 0;
+  }
+
+  
+  /* Product Categories 
+  .categories .card {
+    border: none;
+    transition: transform 0.3s ease;
+  }
+  
+  .categories .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .categories .card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #28a745;
+    text-align: center;
+  }
+  
+  /* Footer 
+  footer {
+    background-color: #343a40;
+    color: white;
+  }
+  
+  footer a {
+    color: white;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+  */
