@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Location Box</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    
+
+  .btn-cart {
+    background-color: rgb(12, 131, 31) !important;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 13px;
+  }
+
+  .delivery-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.775rem;
+    color: black;
+  }
+
+
+  .arrowdown-icone {
+    font-size: 0.975rem;
+  }
+
+
+  @media (max-width: 767.98px) {
+    .navbar {
+      border-bottom: none !important;
+    }
+  }
+
+  @media (max-width: 1259px) {
+    .delivery {
+      margin-left: 6px !important;
+      margin-right: 0 !important;
+    }
+
+    .search-container {
+      margin: 0 !important;
+    }
+
+    .navbar-nav {
+      margin: 0;
+    }
+
+  }
+
+  @media (max-width: 1259px) {
+    .my-cart .cart-button {
+      background-color: rgb(12, 131, 31) !important;
+      /* Change background color */
+      font-size: 15px;
+      /* Adjust font size if needed */
+      padding: 16px 15px 16px;
+      border-radius: 8px;
+      border: 0;
+    }
+  }
+
+  .search-item {
+    cursor: text;
+    border: 1px solid rgb(232, 232, 232);
+    border-radius: 15px;
+    background-color: rgb(248, 248, 248);
+    color: rgb(130, 130, 130);
+    box-shadow: none;
+  }
+
+  .animation {
+    line-height: 2.9em;
+    margin-top: 10px;
+    border: 0px;
+    overflow: hidden;
+    pointer-events: none;
+    background-color: rgb(248, 248, 248);
+  }
+
+  .animated-item {
+    animation: slideUp 5s infinite;
+    position: relative;
+  }
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(0);
+    }
+
+    33% {
+      transform: translateY(-100%);
+    }
+
+    67% {
+      transform: translateY(-200%);
+    }
+
+    100% {
+      transform: translateY(-300%);
+    }
+  }
+
+    /* Overlay Background */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6); /* Transparent black background */
+      z-index: 999; /* Ensure it appears on top */
+      display: none; /* Hidden by default */
+    }
+
+    /* Location Box */
+    .location-box {
+      position: fixed;
+      top: 26%;
+      left: 20%;
+      transform: translate(-50%, -50%);
+      width: 560px;
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 20px;
+      z-index: 1000; /* Ensure it appears above the overlay */
+    }
+
+    /* Close Icon */
+    .close-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar (Example Content) -->
+  <nav class=" navbar navbar-expand-lg bg-white sticky-top  border-bottom" style="position: relative;">
+    <!-- Logo: Show only on lg screens and above -->
+    <a class="navbar-brand d-none d-lg-block" href="#">
+      <svg width="134" height="60" xmlns="http://www.w3.org/2000/svg">
+        <text x="10" y="45" font-family="Arial" font-size="40" font-weight="bold" fill="#F7DB4F">b</text>
+        <text x="35" y="45" font-family="Arial" font-size="40" font-weight="bold" fill="#F7DB4F">l</text>
+        <text x="44" y="45" font-family="Arial" font-size="40" font-weight="bold" fill="#F7DB4F">i</text>
+        <text x="52" y="45" font-family="Arial" font-size="40" font-weight="bold" fill="#F7DB4F">n</text>
+        <text x="75" y="45" font-family="Arial" font-size="40" font-weight="bold" fill="#F7DB4F">k</text>
+        <text x="100" y="45" font-family="Arial" font-size="40" font-weight="bold" fill="#6CBF21">i</text>
+        <text x="110" y="45" font-family="Arial" font-size="40" font-weight="bold" fill="#6CBF21">t</text>
+      </svg>
+    </a>
+    <!--divider-->
+    <div class="divider d-none d-lg-block"
+      style="width: 1px; background-color: #ddd; position: absolute; top: 0; bottom: 0; left: 170px;"></div>
+
+    <!-- Delivery -->
+    <div class="delivery mx-5 d-none d-lg-block text-nowrap" onclick="openLocationBox()">
+      <div class="fw-bold" onclick="window.location.href='delivery.html';" style="cursor: pointer;">
+        Delivery in 8 minutes
+      </div>
+      <div class="delivery-text">
+        B62, Pocket B, South City I, Select...
+        <i class="arrowdown-icone fa-sharp fa-solid fa-caret-down fs-6"></i>
+      </div>
+    </div>
+    
+
+    <!-- Contact Icon -->
+    <div class=" d-lg-none d-sm-block ms-auto text-end">
+      <button class="btn contact-icon border border-1 mx-2 border-dark rounded-circle" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
+        <i class="fa-solid fa-user fs-6"></i>
+      </button>
+    </div>
+
+    <!--search button input box-->
+    <div class="search-item  position-relative d-none d-lg-block w-75">
+      <div class="position-absolute  py-2 align-items-center d-flex fs-4 "
+        style="left: 15px; top: 50%; transform: translateY(-50%); color: black;">
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="animation-box py-4">
+        <div class="animation  position-absolute h-100 w-75 border-0"
+          style="top: 50%; transform: translateY(-70%); left: 50px;">
+          <div class="animated-item">Search "Milk"</div>
+          <div class="animated-item">Search "paneer"</div>
+          <div class="animated-item">Search "Bread"</div>
+          <div class="animated-item">Search "Curd"</div>
+          <div class="animated-item">Search "Coffee"</div>
+          <div class="animated-item">Search "Suger"</div>
+        </div>
+      </div>
+    </div>
+
+    <!--account and my cart-->
+    <div class=" collapse navbar-collapse mx-4 text-white">
+      <ul class="navbar-nav  mr-5">
+        <li class="nav-item  dropdown">
+          <a class="nav-link fs-5 dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">Account </a>
+          <ul class="dropdown-menu dropdown-menu-dark "> <i class="fas fa-chevron-down"></i>
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Action</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav mr-auto text-nowrap">
+        <li class="nav-item  my-cart">
+          <a class="btn btn-cart text-white " href="#">
+            <i class="fas fa-bookmark pe-2 fs-5"></i> My Cart
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Trigger Button -->
+  
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Delivery Location -->
+  <div class="location-box" id="locationBox">
+    <!-- Close Icon -->
+    <i class="fa-solid fa-xmark close-icon" onclick="closeLocationBox()"></i>
+
+    <!-- Change Location -->
+    <div>Change Location</div>
+
+    <!-- Detect or Enter Location -->
+    <div class="my-3 d-flex align-items-center" style="height: 80px;">
+      <div class="d-flex align-items-center">
+        <button class="btn text-white d-flex text-nowrap me-3" style="background-color: forestgreen;">
+          Detect My Location
+        </button>
+        <span>or</span>
+        <input class="form-control ms-3 py-4" placeholder="Enter location" style="width: 250px;" />
+      </div>
+    </div>
+
+    <!-- Saved Address Section -->
+    <div class="my-3">
+      <h5>Your Saved Address</h5>
+      <div class="d-flex bg-light px-3 align-items-center"
+        style="border: 1px solid #6c757d; background-color: lightskyblue; height: 100px;">
+        <i class="fa-solid fa-house fs-4"></i>
+        <p class="mb-0 border-dark px-2">
+          Seema Sharma, near Monu Dairy, Krishna Colony, Sarfabad Village, Block A, Sector 72, Noida
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openLocationBox() {
+      document.getElementById('overlay').style.display = 'block'; // Show overlay
+      document.getElementById('locationBox').style.display = 'block'; // Show location box
+    }
+
+    function closeLocationBox() {
+      document.getElementById('overlay').style.display = 'none'; // Hide overlay
+      document.getElementById('locationBox').style.display = 'none'; // Hide location box
+    }
+  </script>
+</body>
+
+</html>
